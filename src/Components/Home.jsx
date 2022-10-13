@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, } from 'react';
 import { axios } from "../Axios";
+import { useHistory } from "react-router-dom";
+import Update from './Update';
+
 
 const Home = () => {
 
@@ -30,6 +33,7 @@ const Home = () => {
       setUsers(response.data)
     };
     getUsers();
+
   }, []);
 
   // create part
@@ -64,9 +68,10 @@ const Home = () => {
 
 
   //update section
-
+  const history = useHistory();
   const updateUser = (id) => {
     console.log(id)
+    // return history.push("/update" + id);
   }
 
   return (
@@ -111,7 +116,7 @@ const Home = () => {
                     <td>{user.fname}</td>
                     <td>{user.lname}</td>
                     <td>
-                      <button onClick={() => updateUser(user.id)}>Edit</button>
+                      <button onClick={() => updateUser(user.id, history.push("/update"))}>Edit</button>
                       <button onClick={(e) => deleteUser(user.id, e)}>Delete</button>
                     </td>
                   </tr>
