@@ -71,7 +71,6 @@ const Home = () => {
   const history = useHistory();
   const updateUser = (id) => {
     console.log(id)
-    // return history.push("/update" + id);
   }
 
   return (
